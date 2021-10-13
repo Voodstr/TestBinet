@@ -8,18 +8,20 @@ import ru.voodster.testbinet.R
 import ru.voodster.testbinet.api.ItemModel
 import ru.voodster.testbinet.ext.ItemDiffUtilCallback
 
-class ListAdapter(private val inflater: LayoutInflater,private val listener:((filmItem: ItemModel)->Unit)?) : RecyclerView.Adapter<ItemVH>() {
+class ListAdapter(
+    private val inflater: LayoutInflater,
+    private val listener: ((filmItem: ItemModel) -> Unit)?
+) : RecyclerView.Adapter<ItemVH>() {
 
 
-
-    private val fakeItem = ItemModel("4klJeiCKTs","Вторая запись",1442236233,1442236233)
+    private val fakeItem = ItemModel("4klJeiCKTs", "Вторая запись", 1442236233, 1442236233)
     private val fakeList = arrayListOf(fakeItem)
 
 
     private var itemList: ArrayList<ItemModel> = fakeList
 
-    fun setItems(list: List<ItemModel>){
-        val itemDiffUtilCallback = ItemDiffUtilCallback(itemList,list)
+    fun setItems(list: List<ItemModel>) {
+        val itemDiffUtilCallback = ItemDiffUtilCallback(itemList, list)
         val diffResult = DiffUtil.calculateDiff(itemDiffUtilCallback)
         itemList.clear()
         itemList.addAll(list)
@@ -40,6 +42,6 @@ class ListAdapter(private val inflater: LayoutInflater,private val listener:((fi
     }
 
     override fun getItemCount(): Int {
-        return  itemList.size
+        return itemList.size
     }
 }

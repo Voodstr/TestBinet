@@ -1,21 +1,20 @@
 package ru.voodster.testbinet
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import ru.voodster.testbinet.api.ItemModel
 import ru.voodster.testbinet.add.AddFragment
+import ru.voodster.testbinet.api.ItemModel
 import ru.voodster.testbinet.info.InfoFragment
 import ru.voodster.testbinet.list.ListFragment
 
-class MainActivity : AppCompatActivity(),ListFragment.OnItemClickListener {
+class MainActivity : AppCompatActivity(), ListFragment.OnItemClickListener {
 
-    private val viewModel:DataViewModel by viewModels()
+    private val viewModel: DataViewModel by viewModels()
 
-    lateinit var bottomNav :BottomNavigationView
+    lateinit var bottomNav: BottomNavigationView
 
     private val listFragment = ListFragment()
 
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity(),ListFragment.OnItemClickListener {
         viewModel.startNewSession()
         openList()
 
-        viewModel.info.observe(this,{
+        viewModel.info.observe(this, {
             openInfo(it)
         })
 
@@ -37,7 +36,8 @@ class MainActivity : AppCompatActivity(),ListFragment.OnItemClickListener {
                 updateDialogBuilder.setTitle(R.string.ConnectionDialogTitle)
                 updateDialogBuilder.setMessage(R.string.ConnectionDialogText)
                 updateDialogBuilder.setCancelable(false)
-                updateDialogBuilder.setPositiveButton(R.string.updateBtn
+                updateDialogBuilder.setPositiveButton(
+                    R.string.updateBtn
                 ) { _, _ ->
                     viewModel.getData()
                 }
@@ -53,40 +53,47 @@ class MainActivity : AppCompatActivity(),ListFragment.OnItemClickListener {
 
 
     private fun setNavigationBar() = bottomNav.setOnItemSelectedListener {
-        when(it.itemId){
+        it.isVisible = true
+        when (it.itemId) {
             R.id.nav_list -> openList()
             R.id.nav_add -> openAdd()
         }
         true
     }
 
-    private fun openInfo(item:ItemModel){
+    private fun openInfo(item: ItemModel) {
         supportFragmentManager
             .beginTransaction()
-            .setCustomAnimations(R.anim.enter_toptobottom,R.anim.exit_bottomtotop,R.anim.enter_bottomtotop,R.anim.exit_toptobottom)
+            .setCustomAnimations(
+                R.anim.enter_toptobottom,
+                R.anim.exit_bottomtotop,
+                R.anim.enter_bottomtotop,
+                R.anim.exit_toptobottom
+            )
             .replace(R.id.fragmentContainer, InfoFragment.newInstance(item))
             .addToBackStack(null)
             .commit()
     }
 
-    private fun openList(){
+    private fun openList() {
         supportFragmentManager
             .beginTransaction()
-            .setCustomAnimations(R.anim.enter_right_toleftt,R.anim.exit_left_toright)
+            .setCustomAnimations(R.anim.enter_right_toleftt, R.anim.exit_left_toright)
             .replace(R.id.fragmentContainer, ListFragment.newInstance().apply {
                 listener = this@MainActivity
             })
             .commit()
     }
-    private fun openAdd(){
+
+    private fun openAdd() {
         supportFragmentManager
             .beginTransaction()
-            .setCustomAnimations(R.anim.enter_left_toright,R.anim.exit_right_toleft)
+            .setCustomAnimations(R.anim.enter_left_toright, R.anim.exit_right_toleft)
             .replace(R.id.fragmentContainer, AddFragment.newInstance())
             .commit()
     }
 
-    private fun setClickListeners(){
+    private fun setClickListeners() {
         listFragment.listener = this
     }
 
@@ -97,14 +104,15 @@ class MainActivity : AppCompatActivity(),ListFragment.OnItemClickListener {
 
     override fun onBackPressed() {
 
-        if (supportFragmentManager.backStackEntryCount>0){
+        if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()
-        }else{
+        } else {
             val exitDialogBuilder = AlertDialog.Builder(this)
             exitDialogBuilder.setTitle(R.string.exitDialogTitle)
             exitDialogBuilder.setMessage(R.string.exitDialogText)
             exitDialogBuilder.setCancelable(true)
-            exitDialogBuilder.setPositiveButton(R.string.yesBtn
+            exitDialogBuilder.setPositiveButton(
+                R.string.yesBtn
             ) { _, _ ->
                 super.onBackPressed()
             }

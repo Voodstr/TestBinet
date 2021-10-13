@@ -33,7 +33,8 @@ class InfoFragment : Fragment() {
     }
 
     private fun setViews(view: View, item: ItemModel) {
-        view.findViewById<TextView>(R.id.info_body).text =item.body.removeSurrounding("&quot;","&quot;")
+        view.findViewById<TextView>(R.id.info_body).text =
+            item.body.removeSurrounding("&quot;", "&quot;")
 
         val sdf = SimpleDateFormat("dd/MM/yy hh:mm", Locale.ROOT)
         view.findViewById<TextView>(R.id.info_created).text = sdf.format(Date(item.da))

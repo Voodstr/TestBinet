@@ -9,6 +9,6 @@ import javax.inject.Singleton
 @Singleton
 interface ViewModelComponent {
 
-    fun api():BinetApi
+    fun api(): BinetApi
 
 }

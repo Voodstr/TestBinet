@@ -44,11 +44,11 @@ class DataViewModel : ViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ result ->
-                if (!result.data.isNullOrEmpty()){
+                if (!result.data.isNullOrEmpty()) {
                     itemsListLiveData.postValue(result.data[0])
                 }
             }, { error ->
-                Log.d("getData", error.localizedMessage?: "Unknown error")
+                Log.d("getData", error.localizedMessage ?: "Unknown error")
                 _errorMsg.value = Event(error.localizedMessage ?: "Unknown error")
             })
         //itemsListLiveData.postValue(fakeList)
@@ -70,11 +70,11 @@ class DataViewModel : ViewModel() {
     }
 
 
-    fun addEntry(record:String){
-        if (record!="null"){
+    fun addEntry(record: String) {
+        if (record != "null") {
             val str = "a=add_entry&session=$session&body=$record"
             //val str = "a=add_entry&session=nukETXdbjYoUkoOKMH&body=$record"
-            val body = RequestBody.create("application/x-www-form-urlencoded".toMediaType(),str)
+            val body = str.toRequestBody("application/x-www-form-urlencoded".toMediaType())
             api.addEntry(body)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

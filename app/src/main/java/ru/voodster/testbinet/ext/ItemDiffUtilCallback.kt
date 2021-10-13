@@ -3,8 +3,10 @@ package ru.voodster.testbinet.ext
 import androidx.recyclerview.widget.DiffUtil
 import ru.voodster.testbinet.api.ItemModel
 
-class ItemDiffUtilCallback(private val oldList: List<ItemModel>,
-                           private val newList: List<ItemModel>) : DiffUtil.Callback() {
+class ItemDiffUtilCallback(
+    private val oldList: List<ItemModel>,
+    private val newList: List<ItemModel>
+) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {
         return oldList.size

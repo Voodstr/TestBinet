@@ -8,19 +8,20 @@ import retrofit2.http.POST
 
 interface BinetApi {
 
-    companion object{
+    companion object {
         const val NS = "a=new_session"
 
     }
-    @Headers("token: D0DFysg-CB-yZLK8Ao")
-    @POST("/testAPI/")
-    fun newSession(@Body data:RequestBody):Single<NewSessionModel>
 
     @Headers("token: D0DFysg-CB-yZLK8Ao")
     @POST("/testAPI/")
-    fun getEntries(@Body data:RequestBody):Single<EntriesModel>
+    fun newSession(@Body data: RequestBody): Single<NewSessionModel>
 
     @Headers("token: D0DFysg-CB-yZLK8Ao")
     @POST("/testAPI/")
-    fun addEntry(@Body data:RequestBody):Single<AddEntryModel>
+    fun getEntries(@Body data: RequestBody): Single<EntriesModel>
+
+    @Headers("token: D0DFysg-CB-yZLK8Ao")
+    @POST("/testAPI/")
+    fun addEntry(@Body data: RequestBody): Single<AddEntryModel>
 }

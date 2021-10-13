@@ -14,7 +14,7 @@ class ItemVH(itemView: View):RecyclerView.ViewHolder(itemView) {
     private val dateV:TextView = itemView.findViewById(R.id.info_created)
     private val changedV:TextView = itemView.findViewById(R.id.info_changed)
     fun bind(item:ItemModel){
-        bodyV.text =item.body.removeSurrounding("&quot;","&quot;")
+        bodyV.text = item.body.removeSurrounding("&quot;", "&quot;")
         val sdf = SimpleDateFormat("dd/MM/yy hh:mm", Locale.ROOT)
         dateV.text = sdf.format(Date(item.da))
         if (item.da!=item.dm){

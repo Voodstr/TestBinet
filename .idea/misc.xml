@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dimon/AndroidStudioProjects/TestBinet/app/src/main/res/drawable/baseline_list_white_36dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Dimon/AndroidStudioProjects/TestBinet/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Dimon/AndroidStudioProjects/TestBinet/app/src/main/res/layout/fragment_add.xml" value="0.4158636026686434" />
         <entry key="..\:/Users/Dimon/AndroidStudioProjects/TestBinet/app/src/main/res/layout/fragment_info.xml" value="0.33" />

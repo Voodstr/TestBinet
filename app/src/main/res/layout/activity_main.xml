@@ -12,7 +12,11 @@
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:menu="@menu/bottom_navigation"
-            android:background="@color/design_default_color_secondary_variant"
+            android:background="@color/design_default_color_primary"
+            app:itemTextColor="@color/design_default_color_on_primary"
+            app:itemIconTint="@color/design_default_color_on_primary"
+            app:itemRippleColor="@color/design_default_color_primary_dark"
+            app:itemIconSize="30dp"
             />
         <FrameLayout
             android:id="@+id/fragmentContainer"
