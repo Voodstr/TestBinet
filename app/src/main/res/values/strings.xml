@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TestBinet</string>
+    <string name="navTitleList">List</string>
+    <string name="navTitleAdd">Add</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navTitleInfo">info</string>
+    <string name="exitDialogTitle">Exit</string>
+    <string name="exitDialogText">Are you sure?</string>
+    <string name="yesBtn">Yes</string>
+    <string name="add_save">Save</string>
+    <string name="add_cancel">cancel</string>
+    <string name="add_hint">ADD</string>
+    <string name="ConnectionDialogTitle">Connection problem</string>
+    <string name="ConnectionDialogText">Update ?</string>
+    <string name="updateBtn">update</string>
+</resources>
